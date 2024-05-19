@@ -1,0 +1,84 @@
+{
+  "1": {
+    "id": 1,
+    "type": "empty",
+    "exit": false,
+    "roomIds": [
+      2,
+      3
+    ]
+  },
+  "2": {
+    "id": 2,
+    "type": "monster",
+    "exit": false,
+    "monster": {
+      "type": "BOSS"
+    },
+    "roomIds": [
+      1,
+      4
+    ]
+  },
+  "3": {
+    "id": 3,
+    "type": "treasure",
+    "exit": false,
+    "chest": {
+      "rarity": "LEGENDARY"
+    },
+    "roomIds": [
+      1,
+      5
+    ]
+  },
+  "4": {
+    "id": 4,
+    "type": "empty",
+    "exit": false,
+    "roomIds": [
+      2,
+      6
+    ]
+  },
+  "5": {
+    "id": 5,
+    "type": "monster",
+    "exit": false,
+    "monster": {
+      "type": "COMMON"
+    },
+    "roomIds": [
+      3,
+      7
+    ]
+  },
+  "6": {
+    "id": 6,
+    "type": "empty",
+    "exit": false,
+    "roomIds": [
+      4,
+      8
+    ]
+  },
+  "7": {
+    "id": 7,
+    "type": "treasure",
+    "exit": false,
+    "chest": {
+      "rarity": "RARE"
+    },
+    "roomIds": [
+      5
+    ]
+  },
+  "8": {
+    "id": 8,
+    "type": "empty",
+    "exit": true,
+    "roomIds": [
+      6
+    ]
+  }
+}

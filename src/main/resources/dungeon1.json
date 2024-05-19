@@ -1,0 +1,50 @@
+{
+  "1": {
+    "id": 1,
+    "type": "empty",
+    "name": "Empty room",
+    "exit": false,
+    "roomIds": [
+      2,
+      3
+    ]
+  },
+  "2": {
+    "id": 2,
+    "type": "monster",
+    "name": "Monster room",
+    "exit": false,
+    "monster": {
+      "type": "COMMON"
+    },
+    "roomIds": [
+      1,
+      3,
+      4
+    ]
+  },
+  "3": {
+    "id": 3,
+    "type": "empty",
+    "name": "Empty Room",
+    "exit": false,
+    "roomIds": [
+      1,
+      2
+    ]
+  },
+  "4": {
+    "id": 4,
+    "type": "treasure",
+    "name": "Treasure room",
+    "exit": true,
+    "chest": {
+      "rarity": "COMMON"
+    },
+    "roomIds": [
+      2
+    ]
+  }
+}
+
+
