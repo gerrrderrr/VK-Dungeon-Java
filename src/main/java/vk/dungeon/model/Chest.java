@@ -17,11 +17,10 @@ public class Chest {
 
     private void setValue() {
         Random random = new Random();
-        switch (rarity) {
-            case COMMON -> value = random.nextInt(1, 10);
-            case RARE -> value = random.nextInt(11, 20);
-            case LEGENDARY -> value = random.nextInt(21, 30);
-            default -> value = 0;
-        }
+        value = switch (rarity) {
+            case COMMON -> random.nextInt(ChestRarity.COMMON.getOrigin(), ChestRarity.COMMON.getBound());
+            case RARE -> random.nextInt(ChestRarity.RARE.getOrigin(), ChestRarity.RARE.getBound());
+            case LEGENDARY -> random.nextInt(ChestRarity.LEGENDARY.getOrigin(), ChestRarity.LEGENDARY.getBound());
+        };
     }
 }

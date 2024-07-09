@@ -3,7 +3,6 @@ package vk.dungeon.room;
 import lombok.Getter;
 import lombok.Setter;
 import vk.dungeon.model.Chest;
-import vk.dungeon.room.Room;
 
 @Getter
 @Setter
