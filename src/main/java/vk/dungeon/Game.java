@@ -25,15 +25,14 @@ public class Game {
         Thread.sleep(1000);
 
         while (true) {
-            if (room instanceof MonsterRoom) {
-                System.out.println(room.isVisited() ? "You have entered a room with a defeated Monster." : "You have entered a room with a Monster.");
-                player.addPoints(((MonsterRoom) room).startAFight());
-            } else if (room instanceof TreasureRoom) {
-                System.out.println(room.isVisited() ? "You have entered a room with an empty Treasure Chest." : "You have entered a room with a Treasure Chest.");
-                player.addPoints(((TreasureRoom) room).getReward());
-            } else if (room instanceof EmptyRoom) {
-                System.out.println("You have entered an empty room.");
-            }
+            if (room instanceof MonsterRoom monsterRoom) {
+                System.out.printf("You have entered a room with a %s Monster.%n", monsterRoom.isVisited() ? "defeated" : "");
+                player.addPoints(monsterRoom.startAFight());
+            } else if (room instanceof TreasureRoom treasureRoom) {
+                System.out.printf("You have entered a room with %s Treasure Chest.%n", treasureRoom.isVisited() ? "an empty" : "a");
+                player.addPoints(treasureRoom.getReward());
+            } else if (room instanceof EmptyRoom) System.out.println("You have entered an empty room.");
+
 
             if (room.isExit()) {
                 System.out.println("There is a huge open door inside this room! It is so bright out there!");
@@ -47,9 +46,7 @@ public class Game {
 
             while (!room.getRoomIds().contains(input)) {
                 System.out.println("\nEnter the number of a door:");
-                if (scanner.hasNextInt()) {
-                    input = scanner.nextInt();
-                }
+                if (scanner.hasNextInt()) input = scanner.nextInt();
                 scanner.nextLine();
             }
             room = dungeon.getRooms().get(String.valueOf(input));
@@ -68,11 +65,11 @@ public class Game {
         while (!queue.isEmpty()) {
             Room current = queue.poll();
             if (current.isExit()) {
-                List<Room> path = new LinkedList<>();
+                Deque<Integer> path = new LinkedList<>();
                 for (Room at = current; at != null; at = pathMap.get(at)) {
-                    path.add(0, at);
+                    path.addFirst(at.getId());
                 }
-                return path.stream().map(Room::getId).toList().toString();
+                return path.toString();
             }
 
             for (int neighborId : current.getRoomIds()) {

@@ -21,20 +21,20 @@ public class Monster {
         Random random = new Random();
         switch (type) {
             case COMMON -> {
-                strength = random.nextInt(10, 15);
-                damage = 1;
+                strength = random.nextInt(MonsterType.COMMON.getOrigin(), MonsterType.COMMON.getBound());
+                damage = MonsterType.COMMON.getDamage();
             }
             case CHAMPION -> {
-                strength = random.nextInt(16, 20);
-                damage = 2;
+                strength = random.nextInt(MonsterType.CHAMPION.getOrigin(), MonsterType.CHAMPION.getBound());
+                damage = MonsterType.CHAMPION.getDamage();
             }
             case BOSS -> {
-                strength = random.nextInt(21, 25);
-                damage = 3;
+                strength = random.nextInt(MonsterType.BOSS.getOrigin(), MonsterType.BOSS.getBound());
+                damage = MonsterType.BOSS.getDamage();;
             }
             case LEGENDARY -> {
-                strength = random.nextInt(26, 30);
-                damage = 4;
+                strength = random.nextInt(MonsterType.LEGENDARY.getOrigin(), MonsterType.LEGENDARY.getBound());
+                damage = MonsterType.LEGENDARY.getDamage();;
             }
             default -> {
                 strength = 0;
@@ -44,6 +44,6 @@ public class Monster {
     }
 
     public void reduceStrength() {
-        strength = strength - damage;
+        strength -= damage;
     }
 }
